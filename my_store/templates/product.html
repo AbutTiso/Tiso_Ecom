@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img
+          src="{{ product.image.url }}"
+          class="img-fluid rounded-start"
+          alt="{{ product.name }}"
+        />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <center>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+
+            {% if product.is_sale %}
+            <div class="d-flex justify-content-center small text-warning mb-2">
+              <div class="bi-star-fill"></div>
+              &nbsp;&nbsp;Sale!&nbsp;&nbsp;
+              <div class="bi-star-fill"></div>
+            </div>
+            <strike>${{ product.price }}</strike>
+            &nbsp; <strong>${{ product.sale_price }}</strong>
+            {% else %}
+            <strong>${{ product.price }}</strong>
+            {% endif %}
+
+            <br />
+            <small>ID: {{ product.id }}</small>
+
+            <div class="row justify-content-center mt-3">
+              <div class="col-md-2">Quantity:</div>
+              <div class="col-md-2">
+                <select class="form-select form-select-sm" id="qty-cart">
+                  {% for i in "1234510" %}
+                  <option value="{{ forloop.counter }}">
+                    {{ forloop.counter }}
+                  </option>
+                  {% endfor %}
+                </select>
+
+              </div>
+            </div>
+
+            <br />
+            <a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="add-cart"
+              data-product-id="{{ product.id }}"
+            >
+              Add to Cart
+            </button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cart quantity placeholder (optional fallback) -->
+<div style="display: none">
+  <span id="cart_quantity">{{ cart|length }}</span>
+</div>
+
+<script>
+  $(document).on("click", "#add-cart", function (e) {
+    e.preventDefault();
+
+    const productID = $(this).data("product-id");
+    const quantity = $("#qty-cart").val();
+
+    $.ajax({
+      type: "POST",
+      url: "{% url 'cart_add' %}",
+      data: {
+        product_id: productID,
+        product_qty: quantity,
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        action: "post",
+      },
+      success: function (json) {
+        document.getElementById("cart_quantity").textContent = json.qty;
+        console.log("Item added to cart.");
+      },
+      error: function (xhr, errmsg, err) {
+        console.error("Add to cart failed:", errmsg);
+      },
+    });
+  });
+</script>
+{% endblock %}
