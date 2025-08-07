@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-bhtwpm#@3bm8tb@w#=1%rz%kcrjqzzpi4pk9)y3_(sq5t*9jeo
 DEBUG = True
 
 ALLOWED_HOSTS = ['tisoecom-production.up.railway.app', 'https://tisoecom-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['tisoecom-production.up.railway.app', 'https://tisoecom-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://tisoecom-production.up.railway.app']
 
 
 # Application definition
