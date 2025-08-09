@@ -1,1 +1,2 @@
-web: python manage.py migrate && gunicorn My_Ecom.wsgi --bind 0.0.0.0:$PORT --workers 3 --timeout 120
+web: gunicorn store.wsgi --log-file
+web: python manage.py migrate && gunicorn store.wsg
