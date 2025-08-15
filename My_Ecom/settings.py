@@ -60,7 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoise.Middleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    #'whitenoise.middleware.WhiteNoise.Middleware',
 ]
 
 ROOT_URLCONF = 'My_Ecom.urls'
@@ -95,8 +97,8 @@ DATABASES = {
         'NAME': 'railway' ,
         'USER':  'postgres',
         'PASSWORD': os.environ.get('DB_PASSWORD_YO') ,
-        'HOST': 'shinkansen.proxy.rlwy.net',
-        'PORT': '20498',
+        'HOST': 'nozomi.proxy.rlwy.net',
+        'PORT': '58453',
        
     }
 }
