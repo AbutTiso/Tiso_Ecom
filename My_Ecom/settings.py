@@ -32,8 +32,13 @@ SECRET_KEY = 'django-insecure-bhtwpm#@3bm8tb@w#=1%rz%kcrjqzzpi4pk9)y3_(sq5t*9jeo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['tisoecom-production.up.railway.app','https://tisoecom-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['tisoecom-production.up.railway.app','https://tisoecom-production.up.railway.app']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://tisoecom-production.up.railway.app'
+]
+
 
 
 # Application definition
@@ -97,9 +102,10 @@ DATABASES = {
         'NAME': 'railway' ,
         'USER':  'postgres',
         'PASSWORD': os.environ.get('DB_PASSWORD_YO') ,
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
+        'HOST': 'hopper.proxy.rlwy.net',
+        'PORT': '30634',
        
+      # postgresql://postgres:kcGTzErtbWvZBIpLYpFbQoGsPWEcFfUg@hopper.proxy.rlwy.net:30634/railway
     }
 }
 
