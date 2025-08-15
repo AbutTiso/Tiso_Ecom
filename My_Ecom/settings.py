@@ -96,8 +96,8 @@ DATABASES = {
         'NAME': 'railway' ,
         'USER':  'postgres',
         'PASSWORD': os.environ.get('DB_PASSWORD_YO') ,
-        'HOST': 'nozomi.proxy.rlwy.net',
-        'PORT': '58453',
+        'HOST': 'postgres.railway.internal',
+        'PORT': '5432',
        
     }
 }
