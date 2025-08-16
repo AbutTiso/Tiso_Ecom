@@ -57,7 +57,10 @@ INSTALLED_APPS = [
     'my_store',
     'cart',
     'payment',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+
+    #third-party apps
+    'django_extensions',
 
 ]
 
@@ -79,7 +82,7 @@ ROOT_URLCONF = 'My_Ecom.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "my_store"/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
