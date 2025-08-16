@@ -60,9 +60,11 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
 
     #third-party apps
-    'django_extensions',
+    
 
 ]
+if DEBUG:
+    INSTALLED_APPS += ['django_extensions']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
